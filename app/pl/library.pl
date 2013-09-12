@@ -6,23 +6,10 @@ use JSON;
 use Audio::TagLib;
 
 my $cgi = CGI->new();
-my $mp3Root = "/music";
-my $imgRoot = "/music/.covers";
 my $dbConn;
-
-# set of (pl, gn, ar, al, sn)
-# search of
-#   gn ->
-#   ar -> tags, note, genre
-#   al -> artist, genre, year, tags, note
-#   sn -> title, track, tags, note, ar, al, year, gn
-#   pl -> title, tags, note, ar, al, sn, year, gn
-#   ps -> plTitle
-
 reqLibrary();
 
 sub reqLibrary {
-  # my @params = $cgi->param();
   if(!defined $cgi->param('qtype')) { textPlain(""); }
   if($cgi->param('qtype') eq 'total' ) { reqTotal (); }
   if($cgi->param('qtype') eq 'genre' ) { reqGenre (); }
@@ -151,7 +138,6 @@ sub dbQuery {
 
 sub dbGet {
   my $src  = "DBI:mysql:database=musicapp;host=localhost";
-  my $conn = DBI->connect($src, "perldb", "----------"); # insert password
-  
+  my $conn = DBI->connect($src, "perldb", "------------"); # insert password
   return $conn;
 }
