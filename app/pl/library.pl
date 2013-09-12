@@ -63,7 +63,7 @@ sub reqArtist {
 
 sub reqAlbum {
   $dbConn = dbGet(); my @params;
-  my $query = "SELECT artist.name, album.title, album.year, album.cover, album.tags, album.note";
+  my $query = "SELECT album.indexAlbum, artist.name, album.title, album.year, album.cover, album.tags, album.note, artist.genre";
   my $from  = " FROM album, artist";
   my $where = " WHERE (artist.indexArtist = album.indexArtist)";
   if(defined $cgi->param('artist')) { $where.=" AND " if($where ne ""); $where.="(artist.name = ?)"  ; push(@params, $cgi->param('artist')); }
@@ -77,12 +77,14 @@ sub reqAlbum {
   my @arr;
   for(my $i=0; $i<$query->rows; $i++) {
     my %obj; my $ref = $query->fetchrow_arrayref();
-    $obj{'artist'    } = $ref->[0];
-    $obj{'title'     } = $ref->[1];
-    $obj{'year'      } = $ref->[2];
-    $obj{'cover'     } = $ref->[3];
-    $obj{'tags'      } = $ref->[4];
-    $obj{'note'      } = $ref->[5];
+    $obj{'indexAlbum'} = $ref->[0];
+    $obj{'artist'    } = $ref->[1];
+    $obj{'title'     } = $ref->[2];
+    $obj{'year'      } = $ref->[3];
+    $obj{'cover'     } = $ref->[4];
+    $obj{'tags'      } = $ref->[5];
+    $obj{'note'      } = $ref->[6];
+    $obj{'genre'     } = $ref->[7];
     push(@arr, \%obj);
   }
   $query->finish();
@@ -94,6 +96,7 @@ sub reqSong {
   my $query = "SELECT song.indexSong, artist.name, album.title, song.title, song.track, song.tags, song.note, album.year, artist.genre, song.file";
   my $from  = " FROM song, album, artist";
   my $where = " WHERE (song.indexAlbum = album.indexAlbum) AND (song.indexArtist = artist.indexArtist)";
+  if(defined $cgi->param('indexAlbum')) { $where.=" AND " if($where ne ""); $where.="(album.indexAlbum = ?)"; push(@params, $cgi->param('indexAlbum')); }
   if(defined $cgi->param('index' )) { $where.=" AND " if($where ne ""); $where.="(song.indexSong = ?)"; push(@params, $cgi->param('index' )); }
   if(defined $cgi->param('artist')) { $where.=" AND " if($where ne ""); $where.="(artist.name = ?)"   ; push(@params, $cgi->param('artist')); }
   if(defined $cgi->param('album' )) { $where.=" AND " if($where ne ""); $where.="(album.title = ?)"   ; push(@params, $cgi->param('album' )); }
@@ -126,7 +129,7 @@ sub reqSong {
 
 sub textPlain {
   my $content = shift;
-  print "Content type: text/plain\r\n\r\n";
+  print "Content type: text/plain; charset=utf-8\r\n\r\n";
   print $content;
   exit 0;
 }

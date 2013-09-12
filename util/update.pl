@@ -10,7 +10,7 @@ my $imgRoot = "/music/.covers";
 my $appRoot = "/music";
 my $dbConn  = dbGet();
 my $newFiles = 0;
-my $idxArtist=0; my $originArtist=0;
+my $idxArtist=1; my $originArtist=1;
 my $idxAlbum =0; my $originAlbum =0;
 my $idxSong  =0; my $originSong  =0;
 
@@ -58,7 +58,8 @@ sub dbScanFile {
 
   $newFiles++;
   my $id3 = id3Read($file);
-  my $currArtist = dbArtistId($id3);
+  my $currArtist = 0;
+  $currArtist = dbArtistId($id3) if(index($file, "/Compilations/") == -1);
   my $currAlbum  = dbAlbumId($id3, $currArtist);
   my $currSong   = $idxSong; $idxSong++;
   $file =~ s/^$mp3Root/$appRoot/;
@@ -173,7 +174,7 @@ sub dbClear {
 
 sub dbGet {
   my $src  = "DBI:mysql:database=musicapp;host=localhost";
-  my $conn = DBI->connect($src, "perldb", "----------"); # insert password
+  my $conn = DBI->connect($src, "perldb", "------------"); # insert password
   return $conn;
 }
 
@@ -183,7 +184,7 @@ sub dirDirs {
   while(my $entry = readdir($handle)) {
     next unless (-d "$dir/$entry");
     next if (substr($entry,0,1) eq ".");
-    push(@arr, "$entry");
+    push(@arr, $entry);
   }
   closedir($handle);
   return \@arr;
@@ -195,7 +196,7 @@ sub dirFiles {
   while(my $entry = readdir($handle)) {
     next unless (-f "$dir/$entry");
     next if (substr($entry,0,1) eq ".");
-    push(@arr, "$entry");
+    push(@arr, $entry);
   }
   closedir($handle);
   return \@arr;
