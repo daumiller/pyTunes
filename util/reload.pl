@@ -176,7 +176,8 @@ sub dirFiles {
   opendir($handle, $dir);
   while(my $entry = readdir($handle)) {
     next unless (-f "$dir/$entry");
-    next if (substr($entry,0,1) eq ".");
+    next if(substr($entry,0,1) eq ".");
+    next if(! ($entry =~ /\.mp3$/));
     push(@arr, $entry);
   }
   closedir($handle);

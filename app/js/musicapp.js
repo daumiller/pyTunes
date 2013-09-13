@@ -117,9 +117,9 @@ function initApp()
   content.setCategory("genre");
 }
 
-function genreSelected () { albumLoad("genre="      + this.rawGenre);   }
-function artistSelected() { albumLoad("artist="     + this.rawArtist);  }
-function albumSelected () { songLoad ("indexAlbum=" + this.rawAlbum);   }
+function genreSelected () { albumLoad("genre="      + encodeURIComponent(this.rawGenre ));  }
+function artistSelected() { albumLoad("artist="     + encodeURIComponent(this.rawArtist));  }
+function albumSelected () { songLoad ("indexAlbum=" + encodeURIComponent(this.rawAlbum ));  }
 function songSelected()
 {
   $(".contListActive").removeClass("contListActive");
