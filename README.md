@@ -8,6 +8,7 @@ built with
 * perl
 * mysql
 * lighttpd
+* html5 + css3 + javascript
 
 looks like
 ----------
