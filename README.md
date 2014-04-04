@@ -1,6 +1,6 @@
 pyTunes
 =========
-* personal music over-http server
+personal music over-http server
 
 built with
 ----------
@@ -11,8 +11,8 @@ built with
 
 requires
 --------
-[PyMySQL](https://github.com/PyMySQL/PyMySQL)
-[mutagenx](https://github.com/LordSputnik/mutagen)
++ [PyMySQL](https://github.com/PyMySQL/PyMySQL)
++ [mutagenx](https://github.com/LordSputnik/mutagen)
 
 looks like
 ----------
