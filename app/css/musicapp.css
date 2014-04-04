@@ -1,72 +1,121 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
 body {
   margin: 0px;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.catRoot {
-  padding-left : 0px;
-  width      : 100%;
-  height     : 64px;
-  text-align : center;
-  margin-top : 0px;
-  background-color : #F0F0F0;
+/* -------------------------------------------------------------------------- */
+
+#divPlayer { padding-top: 48px; }
+audio { width:100%; }
+
+/* -------------------------------------------------------------------------- */
+
+#divNavigation {
+  height        : 24px;
+  margin-top    : 8px;
+  margin-bottom : 16px;
 }
-.catRoot li {
+
+.navTrail {
+  position : absolute;
+  left     : 8px;
+  height   : 24px;
+}
+
+.navTrail ul {
+  margin      : 0px;
+  padding     : 0px;
+  font-weight : bold;
+  padding     : 4px;
+  border      : 1px solid #000000;
+  border-radius : 6px;
+  background-color : #303030;
+  color         : #E0E0E0;
+  
+}
+.navTrail li { margin-left:3px; margin-right:3px; }
+
+.navTrailItem {
   list-style-type : none;
   display         : inline-block;
-  width           : 128px;
-  line-height     : 64px;
+  line-height     : 24px;
   cursor          : pointer;
 }
-.catRoot li:hover { background-color : #E0E0E0; }
-.catRoot li.active {
-  border-bottom : 3px solid #ff8500;
-  font-weight   : bold;
+.navTrailItem:hover { text-decoration: underline; }
+.navTrailSeparator {
+  list-style-type : none;
+  display         : inline-block;
+  line-height     : 24px;
+}
+
+.navSearch {
+  position : absolute;
+  right    : 8px;
+}
+.navSearch input {
+  text-align : center;
+}
+
+/* -------------------------------------------------------------------------- */
+
+#contentFitter {
+  white-space   : nowrap;
+  position      : absolute;
+  visibility    : hidden;
+  left          : 0px;
+  top           : 0px;
 }
 
 #divContent {
-  min-height: 256px;
-  width     : 100%;
+  min-height : 256px;
+  text-align : center;
 }
 
-.contLarge {
-  display     : inline-block;
-  border      : 1px solid #BBBBBB;
-  min-width   : 128px;
-  text-align  : center;
-  margin-left : 24px;
-  margin-top  : 24px;
-  cursor      : pointer;
+.contentItem {
+  display       : inline-block;
+  border        : 1px solid #BBBBBB;
+  min-width     : 128px;
+  text-align    : center;
+  margin-left   : 24px;
+  margin-right  : 24px;
+  margin-bottom : 16px;
+  cursor        : pointer;
 }
-.contLarge:hover {
+.contentItem:hover {
   font-weight : bold;
   border      : 1px solid #888888;
 }
-.contLarge.contText {
+.contentText {
   padding-left  : 6px;
   padding-right : 6px;
   border-radius : 6px;
   line-height   : 72px;
+  width         : 128px;
+  white-space   : nowrap;
 }
-.contLarge.contIcon {
-  height : 128px;
-  background-size: 128px 128px;
+.contentImage {
+  height          : 128px;
+  background-size : 128px 128px;
 }
 
-.contList {
-  border-collapse : collapse;
-  margin          : 0 auto;
-  width           : 90%;
+.buttonSmall
+{
+  position         : absolute;
+  border           : 1px solid #808080;
+  border-radius    : 6px;
+  background-color : #DDDDDD;
+  cursor           : pointer;
+  width            : 40px;
+  height           : 24px;
+  text-align       : center;
 }
-.contList tbody tr.contHead {
-  background-color: #F0F0F0;
-}
-.contListActive { background-color: #E0E0FF; }
+#btnRepeatSong { left :  96px; }
+#btnRepeatList { left : 156px; }
+#btnPrev       { right: 156px; }
+#btnNext       { right:  96px; }
 
-.listSortable { cursor : pointer; }
-.listSortable:hover { background-color: #E0E0E0; }
-
+/*
 .contPlayBtn {
   background-image : url("/app/img/play.png");
   background-size  : 24px 24px;
@@ -75,6 +124,22 @@ body {
   height  : 24px;
   cursor  : pointer;
 }
+*/
 
-#divPlayer { padding-top: 48px; }
-audio { width:100%; }
+/* -------------------------------------------------------------------------- */
+
+.songList {
+  border-collapse : collapse;
+  margin          : 0 auto;
+  width           : 90%;
+}
+
+.songHead          { background-color : #F0F0F0; }
+.songHead th       { cursor: pointer;            }
+.songHead th:hover { background-color : #E0E0E0; }
+
+.songItem       { cursor : pointer;           }
+.songItem:hover { background-color : #D0D0EE; }
+.songItemActive { background-color : #E0E0FF; }
+
+/* -------------------------------------------------------------------------- */

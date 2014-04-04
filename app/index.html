@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>perlTunes</title>
-    <link rel="stylesheet" href="css/musicapp.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/musicapp.js"></script>
+    <title>music</title>
+    <link rel="stylesheet" href="/app/css/musicapp.css">
+    <script src="/app/js/jquery.js"></script>
+    <script src="/app/js/musicapp.js"></script>
   </head>
   <body>
-    <div><ul class="catRoot">
-      <li id="catRootGenre" > Genre  </li>
-      <li id="catRootArtist"> Artist </li>
-      <li id="catRootAlbum" > Album  </li>
-      <li id="catRootSong"  > Song   </li>
-      <!-- <li id="catRootPlaylist"> Playlists </li> -->
-    </ul></div>
+    <div id="contentFitter"></div>
+    <div id="divNavigation">
+      <div class="navTrail"><ul id="navTrail"></ul></div>
+      <div class="navSearch"><input type="text" id="navSearch"></div>
+      <br>
+    </div>
+    <br>
     <div id="divContent"></div>
     <div id="divPlayer">
-      <span class="playCtrlPrev"></span>
+      <div id="btnRepeatSong" class="buttonSmall btnRepeatSongOff">RS</div>
+      <div id="btnRepeatList" class="buttonSmall btnRepeatListOff">RL</div>
+      <div id="btnPrev"       class="buttonSmall">&lt;</div>
+      <div id="btnNext"       class="buttonSmall">&gt;</div>
+      <br><br>
       <audio controls id="playerControl"><source type="audio/mpeg" id="playerSource"></audio>
-      <span class="playCtrlNext"></span>
     </div>
   </body>
 </html>

@@ -1,14 +1,18 @@
-perlTunes
+pyTunes
 =========
-* my learning-perl project
 * personal music over-http server
 
 built with
 ----------
-* perl
+* python 3 + PyMySQL + mutagenx
 * mysql
 * lighttpd
 * html5 + css3 + javascript
+
+requires
+--------
+[PyMySQL](https://github.com/PyMySQL/PyMySQL)
+[mutagenx](https://github.com/LordSputnik/mutagen)
 
 looks like
 ----------
