@@ -43,7 +43,7 @@ class MP3():
         self.path   = ''.join([PATH_SERVED, path[len(PATH_ROOT):]])
         self.cover  = None
         for tag in fin.tags:
-            if (len(tag) > 5) and (tag[0:5] == 'APIC:'):
+            if (len(tag) > 4) and (tag[0:5] == 'APIC:'):
                 self.cover = fin.tags[tag]
                 filename = [self.uuid]
                 if self.cover.desc.lower().endswith('.png'):
